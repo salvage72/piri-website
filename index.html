@@ -4,67 +4,735 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piri - Yapay Zeka Destekli Sınav Koçun</title>
-    
+    <meta name="description" content="Çözemediğin sorunun fotoğrafını çek, Piri saniyeler içinde adım adım anlatsın. YKS, LGS, SAT için yapay zeka destekli sınav koçun.">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERXV5JS9S2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-ERXV5JS9S2');
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --purple: #7c3aed;
+            --purple-light: #a78bfa;
+            --blue: #3b82f6;
+            --bg: #08080f;
+            --bg2: #0f0f1a;
+            --bg3: #14141f;
+            --border: rgba(255,255,255,0.07);
+            --text: #f1f0ff;
+            --muted: #8b8aad;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Arka plan ışık efektleri */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -30vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(ellipse, rgba(124,58,237,0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(8,8,15,0.85);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 44px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            background: linear-gradient(135deg, var(--purple-light), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--text); }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(124,58,237,0.15);
+            border: 1px solid rgba(124,58,237,0.3);
+            border-radius: 99px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--purple-light);
+            margin-bottom: 2rem;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--purple-light);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 0.6s 0.1s ease both;
+        }
+
+        h1 .gradient {
+            background: linear-gradient(135deg, #c084fc 0%, #818cf8 50%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--muted);
+            max-width: 560px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            animation: fadeUp 0.6s 0.2s ease both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 5rem;
+            animation: fadeUp 0.6s 0.3s ease both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 40px rgba(124,58,237,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 60px rgba(124,58,237,0.45);
+        }
+
+        .btn-primary svg { width: 20px; height: 20px; }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 500;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* SCREENSHOTS */
+        .screenshots {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: flex-end;
+            animation: fadeUp 0.8s 0.4s ease both;
+            overflow: visible;
+        }
+
+        .screenshot-item {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .screenshot-item img {
+            display: block;
+            height: 440px;
+            width: auto;
+        }
+
+        .screenshot-item.center {
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 40px 100px rgba(124,58,237,0.3), 0 40px 80px rgba(0,0,0,0.6);
+        }
+
+        .screenshot-item.center:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .screenshot-item.side {
+            opacity: 0.75;
+        }
+
+        /* FEATURES */
+        .features {
+            position: relative;
+            z-index: 1;
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--purple-light);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .section-sub {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 480px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--bg2);
+            padding: 2.5rem;
+            transition: background 0.2s;
+        }
+
+        .feature-card:hover { background: var(--bg3); }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(124,58,237,0.15);
+            border: 1px solid rgba(124,58,237,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* SHOWCASE (büyük ekran görüntüsü + metin) */
+        .showcase {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem 8rem;
+        }
+
+        .showcase-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .showcase-inner.reverse { direction: rtl; }
+        .showcase-inner.reverse > * { direction: ltr; }
+
+        .showcase-text { }
+
+        .showcase-imgs {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .showcase-imgs img {
+            height: 500px;
+            width: auto;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+
+        .showcase-imgs img:nth-child(2) {
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+
+        .showcase-text .section-label { margin-bottom: 0.75rem; }
+        .showcase-text .section-title { margin-bottom: 1rem; }
+        .showcase-text .section-sub { margin-bottom: 2rem; }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .feature-list li::before {
+            content: '✦';
+            color: var(--purple-light);
+            flex-shrink: 0;
+            margin-top: 1px;
+            font-size: 0.7rem;
+        }
+
+        /* CTA BANNER */
+        .cta-banner {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem 8rem;
+        }
+
+        .cta-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(59,130,246,0.08));
+            border: 1px solid rgba(124,58,237,0.2);
+            border-radius: 32px;
+            padding: 5rem 3rem;
+        }
+
+        .cta-inner h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .cta-inner p {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* FOOTER */
+        footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-links a:hover { color: var(--text); }
+
+        .footer-copy {
+            color: rgba(139,138,173,0.5);
+            font-size: 0.8rem;
+        }
+
+        /* Adil kullanım notu */
+        .fair-use {
+            font-size: 0.72rem;
+            color: rgba(139,138,173,0.4);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .showcase-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                direction: ltr !important;
+            }
+
+            .showcase-imgs {
+                justify-content: center;
+            }
+
+            .showcase-imgs img { height: 360px; }
+
+            .screenshot-item img { height: 300px; }
+
+            .screenshot-item.side { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .screenshots { gap: 10px; }
+            .screenshot-item img { height: 260px; }
+            .cta-inner { padding: 3rem 1.5rem; }
+            .features { padding: 5rem 1.5rem; }
+        }
     </style>
 </head>
-<body class="bg-slate-900 text-white min-h-screen flex flex-col">
+<body>
 
-    <header class="container mx-auto px-6 py-6 flex justify-between items-center">
-        <a href="/" class="flex items-center gap-4">
-            <img src="logo.png" alt="Piri Logo" class="h-24 w-auto hover:opacity-80 transition duration-300">
-            <span class="text-4xl font-extrabold tracking-tighter text-slate-100">
-                Piri <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">App</span>
-            </span>
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">
+            <img src="logo.png" alt="Piri Logo">
+            <span class="logo-text">Piri <span>App</span></span>
         </a>
-        <a href="mailto:piriapp.destek@gmail.com" class="text-sm font-semibold text-slate-300 hover:text-white transition">İletişim</a>
-    </header>
-    
-    <main class="flex-grow flex items-center justify-center text-center px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-snug md:leading-tight">
-                <span class="text-white">Soru Sende,</span> <span class="text-slate-300">Çözüm Piri'de.</span> <br>
-                <span class="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-500 to-blue-500 drop-shadow-2xl py-2 px-1">
-                    Bu İşin Piri!
-                </span>
-            </h1>
-            
-            <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto font-medium">
-                Çözemediğin sorunun fotoğrafını çek, Piri saniyeler içinde senin için adım adım anlatsın. Beklemek yok, anında çözüm.
-            </p>
-            
-            <div class="flex justify-center gap-4">
-                <a href="#" class="bg-white text-slate-900 px-8 py-4 rounded-full font-extrabold text-lg hover:bg-slate-200 hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                    App Store'da Yakında!
-                </a>
-            </div>
+        <nav>
+            <a href="mailto:piriapp.destek@gmail.com">İletişim</a>
+        </nav>
+    </div>
+</header>
 
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">Yapay Zeka Destekli Sınav Koçu</div>
+
+    <h1>
+        Soru Sende,<br>
+        Çözüm <span class="gradient">Piri'de.</span>
+    </h1>
+
+    <p class="hero-sub">
+        Fotoğrafını çek, Piri saniyeler içinde adım adım anlatsın. YKS, LGS, SAT ve daha fazlası için akıllı çözüm arkadaşın.
+    </p>
+
+    <div class="hero-cta">
+        <a href="#" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store'da İndir
+        </a>
+        <a href="gizlilik.html" class="btn-secondary">Gizlilik Politikası</a>
+    </div>
+
+    <!-- Ekran görüntüleri -->
+    <div class="screenshots">
+        <div class="screenshot-item side">
+            <img src="IMG_7721.jpg" alt="Zayıf Nokta Radarı">
         </div>
-    </main>
+        <div class="screenshot-item center">
+            <img src="IMG_7720.jpg" alt="Piri Çözüm Ekranı">
+        </div>
+        <div class="screenshot-item side">
+            <img src="IMG_7722.jpg" alt="Tekrarı Tamamladım">
+        </div>
+    </div>
+</section>
 
-    <footer class="border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Piri App. Tüm hakları saklıdır.</p>
-        <div class="mt-4 flex justify-center gap-6">
-            <a href="gizlilik.html" class="hover:text-white transition">Gizlilik Politikası (Privacy Policy)</a>
-            <a href="mailto:piriapp.destek@gmail.com" class="hover:text-white transition">Destek (Support)</a>
-            <a href="https://www.instagram.com/piri.app/" target="_blank" class="flex items-center gap-2 hover:text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                <span>Piri</span>
+<!-- ÖZELLİKLER -->
+<section class="features">
+    <div style="text-align:center; margin-bottom: 1rem;">
+        <span class="section-label">Neden Piri?</span>
+    </div>
+    <div style="text-align:center; margin-bottom: 4rem;">
+        <h2 class="section-title">Sınav başarısı için<br>ihtiyacın olan her şey</h2>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <h3>Anında Çözüm</h3>
+            <p>Sorunun fotoğrafını çek, yapay zeka saniyeler içinde adım adım çözümü sana anlatsın.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Akıllı Arşiv</h3>
+            <p>Çözdüğün soruları arşivle. Dilediğin zaman geri dön, tekrar et, pekiştir.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Zayıf Nokta Radarı</h3>
+            <p>En çok takıldığın konuları otomatik tespit eder, sana özel çalışma planı önerir.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔥</div>
+            <h3>Seri Sistemi</h3>
+            <p>Her gün soru çöz, serinı canlı tut. Duolingo gibi alışkanlık oluşturan motivasyon sistemi.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3>Spaced Repetition</h3>
+            <p>Bilimsel tekrar sistemi ile öğrendiklerini kalıcı hafızaya taşı. 3-7-15-30 gün döngüsü.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>Türkçe & İngilizce</h3>
+            <p>YKS, LGS, KPSS için Türkçe. SAT, ACT, AP için İngilizce. İki dilde tam destek.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SHOWCASE 1 -->
+<section class="showcase">
+    <div class="showcase-inner">
+        <div class="showcase-text">
+            <span class="section-label">Adım Adım Çözüm</span>
+            <h2 class="section-title">Sadece cevap değil,<br>gerçek anlayış.</h2>
+            <p class="section-sub">Piri her soruyu konu tespitinden sonuca kadar adımlara böler. Ezberlemezsin, anlarsın.</p>
+            <ul class="feature-list">
+                <li>Yapay zeka sorunun konusunu otomatik tespit eder</li>
+                <li>Analiz, çözüm ve sonuç kartları ile net anlatım</li>
+                <li>Türkiye ve global sınav müfredatlarına özel çözümler</li>
+                <li>Hatalı çözüm tespit sistemi, 3 katmanlı doğrulama</li>
+            </ul>
+        </div>
+        <div class="showcase-imgs">
+            <img src="IMG_7720.jpg" alt="Adım adım çözüm">
+            <img src="Image.jpg" alt="İngilizce çözüm">
+        </div>
+    </div>
+</section>
+
+<!-- SHOWCASE 2 -->
+<section class="showcase">
+    <div class="showcase-inner reverse">
+        <div class="showcase-text">
+            <span class="section-label">Zayıf Nokta Radarı</span>
+            <h2 class="section-title">Nereye çalışman<br>gerektiğini bil.</h2>
+            <p class="section-sub">Her çözdüğün soruyu analiz eder, hangi konularda takıldığını sana gösterir.</p>
+            <ul class="feature-list">
+                <li>Konu bazlı başarı grafiği</li>
+                <li>En çok hata yapılan konular önceliklendirilir</li>
+                <li>Ana ekran widget'ı ile anlık takip</li>
+                <li>Piri'nin Tavsiyesi ile kişisel çalışma önerisi</li>
+            </ul>
+        </div>
+        <div class="showcase-imgs">
+            <img src="IMG_7721.jpg" alt="Zayıf nokta analizi">
+        </div>
+    </div>
+</section>
+
+<!-- SHOWCASE 3 -->
+<section class="showcase">
+    <div class="showcase-inner">
+        <div class="showcase-text">
+            <span class="section-label">Tekrar Sistemi</span>
+            <h2 class="section-title">Öğrendiklerini<br>unutma.</h2>
+            <p class="section-sub">Bilimsel aralıklı tekrar sistemi ile çözdüğün sorular doğru zamanda karşına çıkar.</p>
+            <ul class="feature-list">
+                <li>3-7-15-30 gün spaced repetition döngüsü</li>
+                <li>Günün Tekrarı ile hatırlatma kartları</li>
+                <li>Tekrarı tamamladım butonu ile ilerleme kaydı</li>
+                <li>Seri sistemi ile günlük alışkanlık oluşturma</li>
+            </ul>
+        </div>
+        <div class="showcase-imgs">
+            <img src="IMG_7731.jpg" alt="Tekrar tamamladım">
+            <img src="IMG_7733.jpg" alt="Tekrar özelliği">
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+    <div class="cta-inner">
+        <h2>Netlerini artırmaya<br>bugün başla.</h2>
+        <p>sayısız öğrenci Piri ile çalışıyor. Sen de katıl.</p>
+        <a href="#" class="btn-primary" style="display:inline-flex; margin: 0 auto;">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store'da İndir
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <a href="/" class="logo">
+            <img src="logo.png" alt="Piri" style="height:32px;">
+            <span class="logo-text" style="font-size:1.1rem;">Piri <span>App</span></span>
+        </a>
+
+        <div class="footer-links">
+            <a href="gizlilik.html">Gizlilik Politikası</a>
+            <a href="mailto:piriapp.destek@gmail.com">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Destek
+            </a>
+            <a href="https://www.instagram.com/piri.app/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Instagram
             </a>
         </div>
-    </footer>
+
+        <p class="fair-use">
+            Premium abonelik, günlük 80 sorgu adil kullanım kotası kapsamındadır. Normal kullanımda bu limite ulaşmak mümkün değildir. Sunucu stabilitesi için uygulanmaktadır.
+        </p>
+
+        <p class="footer-copy">&copy; 2026 Piri App. Tüm hakları saklıdır.</p>
+    </div>
+</footer>
 
 </body>
 </html>
