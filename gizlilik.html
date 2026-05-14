@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gizlilik Politikası - Piri App</title>
+    <title>Gizlilik Politikası / Privacy Policy - Piri App</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -19,42 +19,103 @@
                 Piri <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">App</span>
             </span>
         </a>
-        <a href="index.html" class="text-sm font-semibold text-slate-300 hover:text-white transition">Ana Sayfa'ya Dön</a>
+        
+        <div class="flex items-center gap-4 md:gap-6">
+            <a href="index.html" class="hidden md:inline-block text-sm font-semibold text-slate-300 hover:text-white transition">Ana Sayfa'ya Dön</a>
+            <button id="langToggleBtn" class="bg-slate-800 border border-slate-600 text-slate-200 hover:bg-slate-700 hover:text-white px-4 py-2 rounded-lg text-sm font-bold transition duration-300 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022h1.407z"/><path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.309-.344l.874-.533-.514-.844-1.28.784c-.035-.06-.072-.12-.11-.18l-.963.504z"/></svg>
+                <span id="langBtnText">ENG</span>
+            </button>
+        </div>
     </header>
 
     <main class="flex-grow container mx-auto px-6 py-12 max-w-4xl">
-        <div class="bg-slate-800 p-8 md:p-12 rounded-2xl shadow-xl border border-slate-700">
-            <h1 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Gizlilik Politikası (Privacy Policy)</h1>
-            <p class="text-slate-400 text-sm mb-8">Son Güncelleme: 29 Mart 2026</p>
-
-            <div class="space-y-6 text-slate-300 leading-relaxed text-sm md:text-base">
-                <section>
-                    <h2 class="text-xl font-semibold text-white mb-2">1. Hangi Verileri Topluyoruz?</h2>
-                    <p>Piri App, sınavlara hazırlık sürecinizde size yardımcı olmak için tasarlanmıştır. Uygulamamızı kullanırken, yalnızca analiz edilmesi için gönderdiğiniz soru fotoğrafları işlenir.</p>
-                </section>
-
-                <section>
-                    <h2 class="text-xl font-semibold text-white mb-2">2. Veriler Nasıl Kullanılıyor?</h2>
-                    <p>Gönderdiğiniz fotoğraflar, yalnızca yapay zeka sistemimiz (AI) tarafından sorunun çözülmesi amacıyla anlık olarak işlenir. Bu görüntüler sunucularımızda kalıcı olarak <strong>saklanmaz</strong>, profillenmez veya üçüncü şahıslarla paylaşılmaz.</p>
-                </section>
-
-                <section>
-                    <h2 class="text-xl font-semibold text-white mb-2">3. Kişisel Bilgiler ve Hesaplar</h2>
-                    <p>Piri App'i kullanmak için herhangi bir hesap oluşturmanız veya kişisel bilgilerinizi (isim, e-posta, telefon vb.) girmeniz gerekmez. Kullanıcılarımızı bireysel olarak izlemiyor veya reklam verileri toplamıyoruz.</p>
-                </section>
-
-                <section>
-                    <h2 class="text-xl font-semibold text-white mb-2">4. İletişim</h2>
-                    <p>Gizlilik politikamızla veya verilerinizle ilgili herhangi bir sorunuz varsa, bizimle her zaman iletişime geçebilirsiniz:</p>
-                    <p class="mt-2 text-purple-400 font-semibold hover:text-purple-300 transition"><a href="mailto:piriapp.destek@gmail.com">piriapp.destek@gmail.com</a></p>
-                </section>
+        <div class="bg-slate-800 p-8 md:p-12 rounded-2xl shadow-xl border border-slate-700 relative overflow-hidden">
+            
+            <div id="contentTR" class="transition-opacity duration-500 ease-in-out">
+                <h1 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Gizlilik Politikası</h1>
+                <p class="text-slate-400 text-sm mb-8">Son Güncelleme: 14 Mayıs 2026</p>
+                
+                <div class="space-y-6 text-slate-300 leading-relaxed text-sm md:text-base">
+                    <section>
+                        <h2 class="text-xl font-semibold text-white mb-2">1. Hangi Verileri Topluyoruz?</h2>
+                        <p>Piri App, sınavlara hazırlık sürecinizde size yardımcı olmak için tasarlanmıştır. Uygulamamızı kullanırken, yalnızca analiz edilmesi için gönderdiğiniz soru fotoğrafları işlenir.</p>
+                    </section>
+    
+                    <section>
+                        <h2 class="text-xl font-semibold text-white mb-2">2. Kamera ve Veriler Nasıl Kullanılıyor?</h2>
+                        <p>Gönderdiğiniz fotoğraflar, yalnızca yapay zeka sistemimiz (AI) tarafından sorunun çözülmesi amacıyla anlık olarak işlenir. Bu görüntüler sunucularımızda kalıcı olarak <strong>saklanmaz</strong>, profillenmez, kimliğinizle eşleştirilmez veya üçüncü şahıslarla paylaşılmaz.</p>
+                    </section>
+    
+                    <section>
+                        <h2 class="text-xl font-semibold text-white mb-2">3. Kişisel Bilgiler ve Abonelikler</h2>
+                        <p>Piri App'i kullanmak için hesap oluşturmanız veya kişisel bilgilerinizi (isim, e-posta vb.) girmeniz gerekmez. Premium aboneliklerin ve soru kotalarının yönetimi için yalnızca anonim bir Cihaz Kimliği (Device ID) kullanılır. Kullanıcılarımızı bireysel olarak izlemiyor (Tracking yapmıyor) veya reklam verileri toplamıyoruz.</p>
+                    </section>
+    
+                    <section>
+                        <h2 class="text-xl font-semibold text-white mb-2">4. İletişim</h2>
+                        <p>Gizlilik politikamızla veya verilerinizle ilgili herhangi bir sorunuz varsa, bizimle her zaman iletişime geçebilirsiniz:</p>
+                        <p class="mt-2"><a href="mailto:piriapp.destek@gmail.com" class="text-purple-400 font-semibold hover:text-purple-300 transition">piriapp.destek@gmail.com</a></p>
+                    </section>
+                </div>
             </div>
+
+            <div id="contentEN" class="hidden transition-opacity duration-500 ease-in-out">
+                <h1 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Privacy Policy</h1>
+                <p class="text-slate-400 text-sm mb-8">Last Updated: May 14, 2026</p>
+
+                <div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 rounded-r-xl mb-8">
+                    <h2 class="text-lg font-bold text-purple-300 mb-3">Data Collection & App Functionality (Apple Review Notice)</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-3">Piri operates with a strict privacy-first approach. <strong>We do not collect, require, or store any personal identity information</strong> (such as names or email addresses).</p>
+                    <ul class="list-disc list-inside text-slate-300 text-sm space-y-2">
+                        <li><strong>Photos & Camera:</strong> Camera access is strictly used to scan educational questions. These photos are processed securely via third-party AI APIs solely for providing solutions (App Functionality). <strong>Photos are never stored on our servers, shared with data brokers, or linked to your identity.</strong></li>
+                        <li><strong>Purchases & Device ID:</strong> To manage premium subscriptions and fair-use limits, we use an anonymous Device ID via our subscription provider (RevenueCat). <strong>This Purchase History and Device ID are never linked to your real-world identity and are not used for tracking or advertising purposes.</strong></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6 text-slate-300 leading-relaxed text-sm md:text-base">
+                    <section>
+                        <h2 class="text-xl font-semibold text-white mb-2">1. Analytics & Usage Data</h2>
+                        <p>We may collect anonymous usage data (such as app interactions or crash logs) to improve the stability of Piri. This data cannot be traced back to you.</p>
+                    </section>
+                    <section>
+                        <h2 class="text-xl font-semibold text-white mb-2">2. Contact Us</h2>
+                        <p>If you have any questions about this Privacy Policy, you can contact us at: <a href="mailto:piriapp.destek@gmail.com" class="text-purple-400 font-semibold hover:text-purple-300 transition">piriapp.destek@gmail.com</a></p>
+                    </section>
+                </div>
+            </div>
+
         </div>
     </main>
 
     <footer class="border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
         <p>&copy; 2026 Piri App. Tüm hakları saklıdır.</p>
     </footer>
+
+    <script>
+        const langToggleBtn = document.getElementById('langToggleBtn');
+        const langBtnText = document.getElementById('langBtnText');
+        const contentTR = document.getElementById('contentTR');
+        const contentEN = document.getElementById('contentEN');
+
+        let currentLang = 'TR';
+
+        langToggleBtn.addEventListener('click', () => {
+            if (currentLang === 'TR') {
+                // İngilizceye Geç
+                contentTR.classList.add('hidden');
+                contentEN.classList.remove('hidden');
+                langBtnText.innerText = 'TR';
+                currentLang = 'EN';
+            } else {
+                // Türkçeye Geç
+                contentEN.classList.add('hidden');
+                contentTR.classList.remove('hidden');
+                langBtnText.innerText = 'ENG';
+                currentLang = 'TR';
+            }
+        });
+    </script>
 
 </body>
 </html>
