@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piri - Yapay Zeka Destekli Sınav Koçun</title>
-    <meta name="description" content="Çözemediğin sorunun fotoğrafını çek, Piri saniyeler içinde adım adım anlatsın. YKS, LGS, SAT için yapay zeka destekli sınav koçun.">
+    <title>Piri - AI Homework Solver & Sınav Koçun</title>
+    <meta name="description" content="Snap a photo, let Piri solve it. AI-powered homework helper for SAT, ACT, AP, and more. / Çözemediğin sorunun fotoğrafını çek, Piri saniyeler içinde adım adım anlatsın.">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERXV5JS9S2"></script>
     <script>
@@ -30,7 +30,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -40,7 +39,6 @@
             overflow-x: hidden;
         }
 
-        /* Arka plan ışık efektleri */
         body::before {
             content: '';
             position: fixed;
@@ -54,7 +52,6 @@
             z-index: 0;
         }
 
-        /* HEADER */
         header {
             position: sticky;
             top: 0;
@@ -75,469 +72,134 @@
             justify-content: space-between;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { height: 44px; width: auto; }
+        .logo-text { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+        .logo-text span { background: linear-gradient(135deg, var(--purple-light), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .logo img {
-            height: 44px;
-            width: auto;
-        }
-
-        .logo-text {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text);
-            letter-spacing: -0.02em;
-        }
-
-        .logo-text span {
-            background: linear-gradient(135deg, var(--purple-light), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+        
+        nav a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
         nav a:hover { color: var(--text); }
 
-        /* HERO */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 6rem 2rem 4rem;
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(124,58,237,0.15);
-            border: 1px solid rgba(124,58,237,0.3);
-            border-radius: 99px;
-            padding: 6px 16px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--purple-light);
-            margin-bottom: 2rem;
-            animation: fadeUp 0.6s ease both;
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--purple-light);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.8rem, 7vw, 5.5rem);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            animation: fadeUp 0.6s 0.1s ease both;
-        }
-
-        h1 .gradient {
-            background: linear-gradient(135deg, #c084fc 0%, #818cf8 50%, #60a5fa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-sub {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: var(--muted);
-            max-width: 560px;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            animation: fadeUp 0.6s 0.2s ease both;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 5rem;
-            animation: fadeUp 0.6s 0.3s ease both;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--purple), var(--blue));
-            color: #fff;
-            padding: 14px 28px;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 0 40px rgba(124,58,237,0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 60px rgba(124,58,237,0.45);
-        }
-
-        .btn-primary svg { width: 20px; height: 20px; }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+        /* LANGUAGE TOGGLE BUTTON */
+        .lang-btn {
             background: rgba(255,255,255,0.06);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 14px 28px;
-            border-radius: 14px;
-            font-weight: 500;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
-        }
-
-        /* SCREENSHOTS */
-        .screenshots {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            align-items: flex-end;
-            animation: fadeUp 0.8s 0.4s ease both;
-            overflow: visible;
-        }
-
-        .screenshot-item {
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .screenshot-item:hover {
-            transform: translateY(-8px);
-        }
-
-        .screenshot-item img {
-            display: block;
-            height: 440px;
-            width: auto;
-        }
-
-        .screenshot-item.center {
-            transform: scale(1.05);
-            z-index: 2;
-            box-shadow: 0 40px 100px rgba(124,58,237,0.3), 0 40px 80px rgba(0,0,0,0.6);
-        }
-
-        .screenshot-item.center:hover {
-            transform: scale(1.05) translateY(-8px);
-        }
-
-        .screenshot-item.side {
-            opacity: 0.75;
-        }
-
-        /* FEATURES */
-        .features {
-            position: relative;
-            z-index: 1;
-            padding: 8rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 0.75rem;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--purple-light);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
-
-        .section-sub {
-            color: var(--muted);
-            font-size: 1.05rem;
-            max-width: 480px;
-            line-height: 1.7;
-            font-weight: 300;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            overflow: hidden;
-            margin-top: 4rem;
-        }
-
-        .feature-card {
-            background: var(--bg2);
-            padding: 2.5rem;
-            transition: background 0.2s;
-        }
-
-        .feature-card:hover { background: var(--bg3); }
-
-        .feature-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(124,58,237,0.15);
-            border: 1px solid rgba(124,58,237,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .feature-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-            letter-spacing: -0.01em;
-        }
-
-        .feature-card p {
-            color: var(--muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        /* SHOWCASE (büyük ekran görüntüsü + metin) */
-        .showcase {
-            position: relative;
-            z-index: 1;
-            padding: 4rem 2rem 8rem;
-        }
-
-        .showcase-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .showcase-inner.reverse { direction: rtl; }
-        .showcase-inner.reverse > * { direction: ltr; }
-
-        .showcase-text { }
-
-        .showcase-imgs {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .showcase-imgs img {
-            height: 500px;
-            width: auto;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-        }
-
-        .showcase-imgs img:nth-child(2) {
-            margin-top: 40px;
-            opacity: 0.8;
-        }
-
-        .showcase-text .section-label { margin-bottom: 0.75rem; }
-        .showcase-text .section-title { margin-bottom: 1rem; }
-        .showcase-text .section-sub { margin-bottom: 2rem; }
-
-        .feature-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .feature-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.5;
-        }
-
-        .feature-list li::before {
-            content: '✦';
-            color: var(--purple-light);
-            flex-shrink: 0;
-            margin-top: 1px;
-            font-size: 0.7rem;
-        }
-
-        /* CTA BANNER */
-        .cta-banner {
-            position: relative;
-            z-index: 1;
-            padding: 4rem 2rem 8rem;
-        }
-
-        .cta-inner {
-            max-width: 720px;
-            margin: 0 auto;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(59,130,246,0.08));
-            border: 1px solid rgba(124,58,237,0.2);
-            border-radius: 32px;
-            padding: 5rem 3rem;
-        }
-
-        .cta-inner h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 1rem;
-        }
-
-        .cta-inner p {
-            color: var(--muted);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        /* FOOTER */
-        footer {
-            position: relative;
-            z-index: 1;
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            text-align: center;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .footer-links a {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.2s;
+            cursor: pointer;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             gap: 6px;
         }
+        .lang-btn:hover { background: rgba(255,255,255,0.15); }
 
+        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 6rem 2rem 4rem; z-index: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); border-radius: 99px; padding: 6px 16px; font-size: 0.8rem; font-weight: 500; color: var(--purple-light); margin-bottom: 2rem; animation: fadeUp 0.6s ease both; }
+        .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--purple-light); animation: pulse 2s infinite; }
+        
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        
+        h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.1s ease both; }
+        h1 .gradient { background: linear-gradient(135deg, #c084fc 0%, #818cf8 50%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .hero-sub { font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; animation: fadeUp 0.6s 0.2s ease both; }
+        .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 5rem; animation: fadeUp 0.6s 0.3s ease both; }
+        
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--purple), var(--blue)); color: #fff; padding: 14px 28px; border-radius: 14px; font-weight: 600; font-size: 1rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 40px rgba(124,58,237,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(124,58,237,0.45); }
+        .btn-primary svg { width: 20px; height: 20px; }
+        
+        .btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text); padding: 14px 28px; border-radius: 14px; font-weight: 500; font-size: 1rem; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+        .screenshots { display: flex; gap: 16px; justify-content: center; align-items: flex-end; animation: fadeUp 0.8s 0.4s ease both; overflow: visible; }
+        .screenshot-item { border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 40px 80px rgba(0,0,0,0.6); transition: transform 0.3s ease; flex-shrink: 0; }
+        .screenshot-item:hover { transform: translateY(-8px); }
+        .screenshot-item img { display: block; height: 440px; width: auto; }
+        .screenshot-item.center { transform: scale(1.05); z-index: 2; box-shadow: 0 40px 100px rgba(124,58,237,0.3), 0 40px 80px rgba(0,0,0,0.6); }
+        .screenshot-item.center:hover { transform: scale(1.05) translateY(-8px); }
+        .screenshot-item.side { opacity: 0.75; }
+
+        .features { position: relative; z-index: 1; padding: 8rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple-light); margin-bottom: 1rem; }
+        .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.1; }
+        .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 480px; line-height: 1.7; font-weight: 300; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; margin-top: 4rem; }
+        .feature-card { background: var(--bg2); padding: 2.5rem; transition: background 0.2s; }
+        .feature-card:hover { background: var(--bg3); }
+        .feature-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.25rem; }
+        .feature-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+        .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
+
+        .showcase { position: relative; z-index: 1; padding: 4rem 2rem 8rem; }
+        .showcase-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .showcase-inner.reverse { direction: rtl; }
+        .showcase-inner.reverse > * { direction: ltr; }
+        .showcase-imgs { display: flex; gap: 12px; justify-content: center; }
+        .showcase-imgs img { height: 500px; width: auto; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+        .showcase-imgs img:nth-child(2) { margin-top: 40px; opacity: 0.8; }
+        .showcase-text .section-label { margin-bottom: 0.75rem; }
+        .showcase-text .section-title { margin-bottom: 1rem; }
+        .showcase-text .section-sub { margin-bottom: 2rem; }
+
+        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+        .feature-list li::before { content: '✦'; color: var(--purple-light); flex-shrink: 0; margin-top: 1px; font-size: 0.7rem; }
+
+        .cta-banner { position: relative; z-index: 1; padding: 4rem 2rem 8rem; }
+        .cta-inner { max-width: 720px; margin: 0 auto; text-align: center; background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(59,130,246,0.08)); border: 1px solid rgba(124,58,237,0.2); border-radius: 32px; padding: 5rem 3rem; }
+        .cta-inner h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .cta-inner p { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
+
+        footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 3rem 2rem; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
+        .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+        .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
         .footer-links a:hover { color: var(--text); }
+        .footer-copy { color: rgba(139,138,173,0.5); font-size: 0.8rem; }
+        .fair-use { font-size: 0.72rem; color: rgba(139,138,173,0.4); max-width: 600px; line-height: 1.6; }
 
-        .footer-copy {
-            color: rgba(139,138,173,0.5);
-            font-size: 0.8rem;
-        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Adil kullanım notu */
-        .fair-use {
-            font-size: 0.72rem;
-            color: rgba(139,138,173,0.4);
-            max-width: 600px;
-            line-height: 1.6;
-        }
-
-        /* ANIMATIONS */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 900px) {
-            .showcase-inner {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                direction: ltr !important;
-            }
-
-            .showcase-imgs {
-                justify-content: center;
-            }
-
+            .showcase-inner { grid-template-columns: 1fr; gap: 3rem; direction: ltr !important; }
+            .showcase-imgs { justify-content: center; }
             .showcase-imgs img { height: 360px; }
-
             .screenshot-item img { height: 300px; }
-
             .screenshot-item.side { display: none; }
         }
-
         @media (max-width: 600px) {
             .screenshots { gap: 10px; }
             .screenshot-item img { height: 260px; }
             .cta-inner { padding: 3rem 1.5rem; }
             .features { padding: 5rem 1.5rem; }
         }
+
+        /* Lang Toggle Helpers */
+        .lang-en { display: none; }
+        .lang-active-en .lang-tr { display: none; }
+        .lang-active-en .lang-en { display: inline-block; } /* inline elements */
+        
+        /* BU SATIR ÖNEMLİ: Resimlerin İngilizce olunca düzgün block halinde görünmesini sağlar */
+        .lang-active-en img.lang-en { display: block; } 
+
+        .lang-active-en div.lang-en, 
+        .lang-active-en section.lang-en, 
+        .lang-active-en p.lang-en, 
+        .lang-active-en h1.lang-en, 
+        .lang-active-en h2.lang-en, 
+        .lang-active-en h3.lang-en { display: block; }
+        .lang-active-en ul.lang-en { display: flex; }
+        .lang-active-en div.lang-en.showcase-imgs { display: flex; }
+        .lang-active-en div.lang-en.screenshots { display: flex; }
+
     </style>
 </head>
 <body>
@@ -548,165 +210,243 @@
             <img src="logo.png" alt="Piri Logo">
             <span class="logo-text">Piri <span>App</span></span>
         </a>
-        <nav>
-            <a href="mailto:piriapp.destek@gmail.com">İletişim</a>
-        </nav>
+        <div class="header-right">
+            <nav class="lang-tr">
+                <a href="mailto:piriapp.destek@gmail.com">İletişim</a>
+            </nav>
+            <nav class="lang-en">
+                <a href="mailto:piriapp.destek@gmail.com">Contact Us</a>
+            </nav>
+            <button id="langBtn" class="lang-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022h1.407z"/><path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.309-.344l.874-.533-.514-.844-1.28.784c-.035-.06-.072-.12-.11-.18l-.963.504z"/></svg>
+                <span id="langText">ENG</span>
+            </button>
+        </div>
     </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-    <div class="hero-badge">Yapay Zeka Destekli Sınav Koçu</div>
+    <div class="hero-badge lang-tr">Yapay Zeka Destekli Sınav Koçu</div>
+    <div class="hero-badge lang-en">AI-Powered Homework Helper</div>
 
-    <h1>
+    <h1 class="lang-tr">
         Soru Sende,<br>
         Çözüm <span class="gradient">Piri'de.</span>
     </h1>
+    <h1 class="lang-en">
+        Snap a Photo,<br>
+        Get the <span class="gradient">Solution.</span>
+    </h1>
 
-    <p class="hero-sub">
-        Fotoğrafını çek, Piri saniyeler içinde adım adım anlatsın. YKS, LGS, SAT ve daha fazlası için akıllı çözüm arkadaşın.
+    <p class="hero-sub lang-tr">
+        Fotoğrafını çek, Piri saniyeler içinde adım adım anlatsın. YKS, LGS, SAT, Kpss ve daha fazlası için akıllı çözüm arkadaşın.
+    </p>
+    <p class="hero-sub lang-en">
+        Stuck on a question? Let Piri analyze and solve it step-by-step. Your ultimate AI study buddy for SAT, ACT, AP, and regular school exams.
     </p>
 
     <div class="hero-cta">
         <a href="#" class="btn-primary">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store'da İndir
+            <span class="lang-tr">App Store'da İndir</span>
+            <span class="lang-en">Download on App Store</span>
         </a>
-        <a href="gizlilik.html" class="btn-secondary">Gizlilik Politikası</a>
+        <a href="gizlilik.html" class="btn-secondary">
+            <span class="lang-tr">Gizlilik Politikası</span>
+            <span class="lang-en">Privacy Policy</span>
+        </a>
     </div>
 
-    <!-- Ekran görüntüleri -->
     <div class="screenshots">
         <div class="screenshot-item side">
-            <img src="IMG_7721.jpg" alt="Zayıf Nokta Radarı">
+            <img class="lang-tr" src="zayıf_nokta_radar_turk.jpg" alt="Zayıf Nokta Radarı">
+            <img class="lang-en" src="zayıf_nokta_eng.jpg" alt="Weakness Radar">
         </div>
         <div class="screenshot-item center">
-            <img src="IMG_7720.jpg" alt="Piri Çözüm Ekranı">
+            <img class="lang-tr" src="soru_çozum_turk.jpg" alt="Piri Çözüm Ekranı">
+            <img class="lang-en" src="save_to archive_eng.jpg" alt="Piri Solution Screen">
         </div>
         <div class="screenshot-item side">
-            <img src="IMG_7722.jpg" alt="Tekrarı Tamamladım">
+            <img class="lang-tr" src="tekrair_tamamladım_turkce.jpg" alt="Tekrarı Tamamladım">
+            <img class="lang-en" src="tekrar_tamam_eng.jpg" alt="Review Completed">
         </div>
     </div>
 </section>
 
-<!-- ÖZELLİKLER -->
 <section class="features">
     <div style="text-align:center; margin-bottom: 1rem;">
-        <span class="section-label">Neden Piri?</span>
+        <span class="section-label lang-tr">Neden Piri?</span>
+        <span class="section-label lang-en">Why Piri?</span>
     </div>
     <div style="text-align:center; margin-bottom: 4rem;">
-        <h2 class="section-title">Sınav başarısı için<br>ihtiyacın olan her şey</h2>
+        <h2 class="section-title lang-tr">Sınav başarısı için<br>ihtiyacın olan her şey</h2>
+        <h2 class="section-title lang-en">Everything you need<br>to ace your exams</h2>
     </div>
 
     <div class="features-grid">
         <div class="feature-card">
             <div class="feature-icon">📸</div>
-            <h3>Anında Çözüm</h3>
-            <p>Sorunun fotoğrafını çek, yapay zeka saniyeler içinde adım adım çözümü sana anlatsın.</p>
+            <h3 class="lang-tr">Anında Çözüm</h3>
+            <h3 class="lang-en">Instant Solutions</h3>
+            <p class="lang-tr">Sorunun fotoğrafını çek, yapay zeka saniyeler içinde adım adım çözümü sana anlatsın.</p>
+            <p class="lang-en">Take a photo of any question and let our AI provide detailed, step-by-step explanations in seconds.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🧠</div>
-            <h3>Akıllı Arşiv</h3>
-            <p>Çözdüğün soruları arşivle. Dilediğin zaman geri dön, tekrar et, pekiştir.</p>
+            <h3 class="lang-tr">Akıllı Arşiv</h3>
+            <h3 class="lang-en">Smart Archives</h3>
+            <p class="lang-tr">Çözdüğün soruları arşivle. Dilediğin zaman geri dön, tekrar et, pekiştir.</p>
+            <p class="lang-en">Save and organize your solved questions into folders. Review them easily before finals.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">📊</div>
-            <h3>Zayıf Nokta Radarı</h3>
-            <p>En çok takıldığın konuları otomatik tespit eder, sana özel çalışma planı önerir.</p>
+            <h3 class="lang-tr">Zayıf Nokta Radarı</h3>
+            <h3 class="lang-en">Weakness Radar</h3>
+            <p class="lang-tr">En çok takıldığın konuları otomatik tespit eder, sana özel çalışma planı önerir.</p>
+            <p class="lang-en">Automatically detects the topics you struggle with the most and guides your study sessions.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🔥</div>
-            <h3>Seri Sistemi</h3>
-            <p>Her gün soru çöz, serinı canlı tut. Duolingo gibi alışkanlık oluşturan motivasyon sistemi.</p>
+            <h3 class="lang-tr">Seri Sistemi</h3>
+            <h3 class="lang-en">Study Streaks</h3>
+            <p class="lang-tr">Her gün soru çöz, serini canlı tut. Duolingo gibi alışkanlık oluşturan motivasyon sistemi.</p>
+            <p class="lang-en">Solve questions daily to keep your streak alive. Build a consistent study habit easily.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🔄</div>
-            <h3>Spaced Repetition</h3>
-            <p>Bilimsel tekrar sistemi ile öğrendiklerini kalıcı hafızaya taşı. 3-7-15-30 gün döngüsü.</p>
+            <h3 class="lang-tr">Spaced Repetition</h3>
+            <h3 class="lang-en">Spaced Repetition</h3>
+            <p class="lang-tr">Bilimsel tekrar sistemi ile öğrendiklerini kalıcı hafızaya taşı. 3-7-15-30 gün döngüsü.</p>
+            <p class="lang-en">Move knowledge to your long-term memory with our science-backed 3-7-15-30 day review cycle.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🌍</div>
-            <h3>Türkçe & İngilizce</h3>
-            <p>YKS, LGS, KPSS için Türkçe. SAT, ACT, AP için İngilizce. İki dilde tam destek.</p>
+            <h3 class="lang-tr">Türkçe & İngilizce</h3>
+            <h3 class="lang-en">Bilingual Support</h3>
+            <p class="lang-tr">YKS, LGS, KPSS için Türkçe. SAT, ACT, AP için İngilizce. İki dilde tam destek.</p>
+            <p class="lang-en">Fully supports English for SAT, ACT, AP, GRE and Turkish for regional exams.</p>
         </div>
     </div>
 </section>
 
-<!-- SHOWCASE 1 -->
 <section class="showcase">
     <div class="showcase-inner">
         <div class="showcase-text">
-            <span class="section-label">Adım Adım Çözüm</span>
-            <h2 class="section-title">Sadece cevap değil,<br>gerçek anlayış.</h2>
-            <p class="section-sub">Piri her soruyu konu tespitinden sonuca kadar adımlara böler. Ezberlemezsin, anlarsın.</p>
-            <ul class="feature-list">
+            <span class="section-label lang-tr">Adım Adım Çözüm</span>
+            <span class="section-label lang-en">Step-by-Step Logic</span>
+            
+            <h2 class="section-title lang-tr">Sadece cevap değil,<br>gerçek anlayış.</h2>
+            <h2 class="section-title lang-en">Not just the answer,<br>real understanding.</h2>
+            
+            <p class="section-sub lang-tr">Piri her soruyu konu tespitinden sonuca kadar adımlara böler. Ezberlemezsin, anlarsın.</p>
+            <p class="section-sub lang-en">Piri breaks down every problem from subject detection to final calculation. Don't memorize, comprehend.</p>
+            
+            <ul class="feature-list lang-tr">
                 <li>Yapay zeka sorunun konusunu otomatik tespit eder</li>
                 <li>Analiz, çözüm ve sonuç kartları ile net anlatım</li>
                 <li>Türkiye ve global sınav müfredatlarına özel çözümler</li>
                 <li>Hatalı çözüm tespit sistemi, 3 katmanlı doğrulama</li>
             </ul>
+            <ul class="feature-list lang-en">
+                <li>AI automatically detects the exact topic of the question</li>
+                <li>Clear explanations via Analysis, Solution, and Result cards</li>
+                <li>Tailored for high school curriculums and college boards</li>
+                <li>3-layered verification to prevent AI hallucinations</li>
+            </ul>
         </div>
-        <div class="showcase-imgs">
-            <img src="IMG_7720.jpg" alt="Adım adım çözüm">
-            <img src="Image.jpg" alt="İngilizce çözüm">
+        <div class="showcase-imgs lang-tr">
+            <img src="soru_çozum_turk.jpg" alt="Adım adım çözüm">
+        </div>
+        <div class="showcase-imgs lang-en">
+            <img src="save_to archive_eng.jpg" alt="Step by step solution">
         </div>
     </div>
 </section>
 
-<!-- SHOWCASE 2 -->
 <section class="showcase">
     <div class="showcase-inner reverse">
         <div class="showcase-text">
-            <span class="section-label">Zayıf Nokta Radarı</span>
-            <h2 class="section-title">Nereye çalışman<br>gerektiğini bil.</h2>
-            <p class="section-sub">Her çözdüğün soruyu analiz eder, hangi konularda takıldığını sana gösterir.</p>
-            <ul class="feature-list">
+            <span class="section-label lang-tr">Zayıf Nokta Radarı</span>
+            <span class="section-label lang-en">Smart Analysis</span>
+            
+            <h2 class="section-title lang-tr">Nereye çalışman<br>gerektiğini bil.</h2>
+            <h2 class="section-title lang-en">Know exactly what<br>to study next.</h2>
+            
+            <p class="section-sub lang-tr">Her çözdüğün soruyu analiz eder, hangi konularda takıldığını sana gösterir.</p>
+            <p class="section-sub lang-en">Piri tracks your performance and highlights your weak spots to optimize your study time.</p>
+            
+            <ul class="feature-list lang-tr">
                 <li>Konu bazlı başarı grafiği</li>
                 <li>En çok hata yapılan konular önceliklendirilir</li>
                 <li>Ana ekran widget'ı ile anlık takip</li>
                 <li>Piri'nin Tavsiyesi ile kişisel çalışma önerisi</li>
             </ul>
+            <ul class="feature-list lang-en">
+                <li>Subject-based success charts</li>
+                <li>Prioritizes topics with the highest error rates</li>
+                <li>Instant tracking with iOS Home Screen widgets</li>
+                <li>Personalized study advice generated by AI</li>
+            </ul>
         </div>
-        <div class="showcase-imgs">
-            <img src="IMG_7721.jpg" alt="Zayıf nokta analizi">
+        <div class="showcase-imgs lang-tr">
+            <img src="zayıf_nokta_radar_turk.jpg" alt="Zayıf nokta analizi">
+        </div>
+        <div class="showcase-imgs lang-en">
+            <img src="zayıf_nokta_eng.jpg" alt="Weak spot analysis">
         </div>
     </div>
 </section>
 
-<!-- SHOWCASE 3 -->
 <section class="showcase">
     <div class="showcase-inner">
         <div class="showcase-text">
-            <span class="section-label">Tekrar Sistemi</span>
-            <h2 class="section-title">Öğrendiklerini<br>unutma.</h2>
-            <p class="section-sub">Bilimsel aralıklı tekrar sistemi ile çözdüğün sorular doğru zamanda karşına çıkar.</p>
-            <ul class="feature-list">
+            <span class="section-label lang-tr">Tekrar Sistemi</span>
+            <span class="section-label lang-en">Review System</span>
+            
+            <h2 class="section-title lang-tr">Öğrendiklerini<br>unutma.</h2>
+            <h2 class="section-title lang-en">Never forget what<br>you've learned.</h2>
+            
+            <p class="section-sub lang-tr">Bilimsel aralıklı tekrar sistemi ile çözdüğün sorular doğru zamanda karşına çıkar.</p>
+            <p class="section-sub lang-en">Our algorithm reminds you of past mistakes right before the forgetting curve hits.</p>
+            
+            <ul class="feature-list lang-tr">
                 <li>3-7-15-30 gün spaced repetition döngüsü</li>
                 <li>Günün Tekrarı ile hatırlatma kartları</li>
                 <li>Tekrarı tamamladım butonu ile ilerleme kaydı</li>
                 <li>Seri sistemi ile günlük alışkanlık oluşturma</li>
             </ul>
+            <ul class="feature-list lang-en">
+                <li>3-7-15-30 day spaced repetition logic</li>
+                <li>Daily Review flashcards</li>
+                <li>Track your progress with one tap</li>
+                <li>Gamified streaks to build discipline</li>
+            </ul>
         </div>
-        <div class="showcase-imgs">
-            <img src="IMG_7731.jpg" alt="Tekrar tamamladım">
-            <img src="IMG_7733.jpg" alt="Tekrar özelliği">
+        <div class="showcase-imgs lang-tr">
+            <img src="tekrair_tamamladım_turkce.jpg" alt="Tekrar tamamladım">
+        </div>
+        <div class="showcase-imgs lang-en">
+            <img src="tekrar_tamam_eng.jpg" alt="Review completion">
         </div>
     </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-banner">
     <div class="cta-inner">
-        <h2>Netlerini artırmaya<br>bugün başla.</h2>
-        <p>sayısız öğrenci Piri ile çalışıyor. Sen de katıl.</p>
+        <h2 class="lang-tr">Netlerini artırmaya<br>bugün başla.</h2>
+        <h2 class="lang-en">Ace your exams<br>starting today.</h2>
+        
+        <p class="lang-tr">Sayısız öğrenci Piri ile çalışıyor. Sen de katıl.</p>
+        <p class="lang-en">Join thousands of students studying smarter with Piri.</p>
+        
         <a href="#" class="btn-primary" style="display:inline-flex; margin: 0 auto;">
             <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store'da İndir
+            <span class="lang-tr">App Store'da İndir</span>
+            <span class="lang-en">Get it on App Store</span>
         </a>
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-inner">
         <a href="/" class="logo">
@@ -715,10 +455,13 @@
         </a>
 
         <div class="footer-links">
-            <a href="gizlilik.html">Gizlilik Politikası</a>
+            <a href="gizlilik.html" class="lang-tr">Gizlilik Politikası</a>
+            <a href="gizlilik.html" class="lang-en">Privacy Policy</a>
+            
             <a href="mailto:piriapp.destek@gmail.com">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Destek
+                <span class="lang-tr">Destek</span>
+                <span class="lang-en">Support</span>
             </a>
             <a href="https://www.instagram.com/piri.app/" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -726,13 +469,32 @@
             </a>
         </div>
 
-        <p class="fair-use">
+        <p class="fair-use lang-tr">
             Premium abonelik, günlük 80 sorgu adil kullanım kotası kapsamındadır. Normal kullanımda bu limite ulaşmak mümkün değildir. Sunucu stabilitesi için uygulanmaktadır.
         </p>
+        <p class="fair-use lang-en">
+            Premium subscription is subject to a daily fair-use quota of 80 questions to maintain server stability. This limit is practically impossible to reach under normal study conditions.
+        </p>
 
-        <p class="footer-copy">&copy; 2026 Piri App. Tüm hakları saklıdır.</p>
+        <p class="footer-copy lang-tr">&copy; 2026 Piri App. Tüm hakları saklıdır.</p>
+        <p class="footer-copy lang-en">&copy; 2026 Piri App. All rights reserved.</p>
     </div>
 </footer>
+
+<script>
+    const langBtn = document.getElementById('langBtn');
+    const langText = document.getElementById('langText');
+    const body = document.body;
+
+    langBtn.addEventListener('click', () => {
+        body.classList.toggle('lang-active-en');
+        if (body.classList.contains('lang-active-en')) {
+            langText.textContent = 'TR';
+        } else {
+            langText.textContent = 'ENG';
+        }
+    });
+</script>
 
 </body>
 </html>
